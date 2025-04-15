@@ -1,6 +1,12 @@
 <?php
 
-include("cbdconnection.php");
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$dbname = 'cbd_bakery';
+
+//create connection 
+$conn = mysqli_connect($host, $user, $pass, $dbname);
     if(isset($_POST['search']))
     ?>
 
@@ -16,12 +22,7 @@ include("cbdconnection.php");
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('photos/bg4.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center top;
-    background-color: #f4f4f4;
-    background-repeat: no-repeat;
+    background-color: rgb(238 231 255 );
     margin: 0;
    padding: 0;
    font-family: Arial, sans-serif;
@@ -29,14 +30,11 @@ include("cbdconnection.php");
 
 h1 {
     
-    position: fixed;
-            left: 50%;
-           margin-top: 5px;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            color: red;
+    
+            font-size: 2rem;
+            color: rgb(236 72 153);
             font-weight: bold;
-            background-color: rgba(255, 255, 255, 0.8);
+           
             padding: 10px;
             border-radius: 5px;
     
@@ -44,63 +42,203 @@ h1 {
 
 }
 
-/* Table Styles */
-table {
-    width: 80%;
-    margin: 30px auto;
-    border-collapse: collapse;
-    background-color: none;
-    border: 1px solid #ddd;
+.orders{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1.5rem; 
 }
 
-th, td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+.orders .partyorder{
+    background-color: var(--card-color);
+    padding: 3rem 2rem;
+    text-align: center; 
 }
 
-th {
-    background-color: #f2f2f2;
-    color: red;
-    font-size: 22px;
+.orders .partyorder h2{
+    color: black;
+    font-size: 1.3rem;
+
+}
+.orders .partyorder .price{
+    color: black;
+    font-size: 1.3rem;
+
+}
+.orders .partyorder .dozenprice{
+    color: black;
+    font-size: 1.3rem;
+
 }
 
-td {
-    font-size: 18px;
-    color: #333;
-}
+
 
 img {
     border-radius: 15px;
 }   
-        .btn {
-            line-height: 2;
+    
+.navbar ul{
+   list-style-type: none;
+   background-color: hsl(0, 0%, 25%);
+   padding: 10px;
+   margin: 0px;
+   overflow: hidden;
+   display: flex;
+   gap: 30px; /* Space between navbar links */
+
+}
+
+
+.navbar a{
+   color: white;
+   text-decoration: none;
+   padding: 15px;
+   display: block;
+   text-align: center;
+   font-size: 20px;
+}
+.navbar a:hover{
+   background-color: lightcoral;
+}
+
+.active{
+
+background-color: purple; 
+}
+
+.button {
+            line-height: 1;
             display: inline-block;
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             text-decoration: none;
             border-radius: 10px;
             color: black;
             padding: 8px;
-            background-color: lightblue;
-            font-size: 20px;
+            background-color: lightpink;
+            font-size: 15px;
             font-weight: bold;
         }
-        .btn:hover {
+        .button:hover {
             color: black;
         }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;;
+            background-color: white; /* Default color */
+            padding: 5px 0; /* Default padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transitions */
+        }
+
+        .header.scrolled {
+            background-color: #f0f0f0; /* Color when scrolled */
+            padding: 0px 0; /* Smaller padding when scrolled */
+        }
+
+        .logo {
+            display: flex;
+        }
+
+        .logo img {
+            height: 50px; /* Smaller logo size when scrolled */
+            width: auto;
+            transition: height 0.3s ease; /* Smooth transition for logo size */
+        }
+
+        .header.scrolled .logo img {
+            height: 40px; /* Smaller logo size when scrolled */
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-family: italic bold;
+            margin: 0 15px; /* Adjusted margin */
+            color: #333; /* Text color */
+            position: relative;
+            font-size: 20px;
+            transition: color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .nav-menu a:hover {
+            color: #555; /* Hover color */
+        }
+        .header.scrolled.nav-menu a {
+            
+            font-size: 15px;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 35px;
+            background-color: #fff;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .search-cart {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .cart-icon {
+            margin-left: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+
     </style>
 
 <body>
-<a href="categorypage.php" class="btn">Back</a>
-    <h1 style="text-align:center; color:red;">Cakes and Slices</h1>
 
-    <table cellspacing="0" cellpadding="10" style="width:100%; margin:auto;">
-        <tr>
-            <th style="text-align:center;font-size:22px;color:red;">Image</th>
-            <th style="text-align:center;width:130px;font-size:22px;color:red;">Food Item</th>
-            <th style="text-align:center;width:130px;font-size:22px;color:red;">Price</th>
-            <th style="text-align:center;font-size:22px;color:red;">Action</th>
-        </tr>
+<!-- header section -->
+<header class="header">
+        <div class="logo">
+            <img src="photos/homelogo5.jpg" alt="Coffee Shop Logo"> <!-- Adjusted logo path -->
+        </div>
+        <div class="nav-menu">
+            <a href="Homepage.php">Home</a>
+            <div class="dropdown">
+                <a href="productspage.php">Menu</a>
+            </div>
+            <a href="contact.php">Contact</a>
+            <a href="#about">About Us</a>
+        </div>
+        <div class="search-cart">
+            <input type="text" class="search-bar" placeholder="Search...">
+            <div class="cart-icon">&#128722;</div>
+        </div>
+    </header>
+   <br><br><br><br>
+
+    <h1 style="text-align:center; color:rgb(236 72 153);">Cakes and Slices</h1>
+    
 
         <?php
                   // Array of products
@@ -115,7 +253,7 @@ img {
             ["caramel.jpg", "caramel slice",  4.90],
             ["hedgehog.jpg", "hedgehog slice",  4.90],
             ["lemon.jpg", "lemon slice",  4.80],
-            ["croissant.jfif", "croissant",  5.80],
+            ["crossiant.jfif", "croissant",  5.80],
             ["almond.jpg", "almond croissant",  5.40],
             ["chocolate.jpg", "flourless almond & orange cake ",  5.40],
             ["orange.jpg", "mini filled criossants",  4.80],
@@ -140,210 +278,240 @@ img {
 
               // Loop through each product and generate a table row
                   foreach ($products as $product) 
-            echo <tr>
-                <td style="text-align:center;"><img src="photos/date.jpg" height="150" width="150" alt=" date.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Date Scone</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$3.20</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
+                  ?>
 
-                </tr>
-                <tr>
-                <td style="text-align:center;"><img src="photos/plainscone.jpg" height="150" width="150" alt=" plainscone.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Plain Scone</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$3.00</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/jamcream.jpg" height="150" width="150" alt=" jamcream.jpg"></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Scone with jam & cream</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$ 5.00</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+<div class="orders">
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/cupcake.jfif" height="150" width="150" alt=" cupcake.jfif "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Cupcake with Lcing</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$3.60</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+<div class="partyorder">
+        <img src="photos/date.jpg" height="120" width="120" alt="">
+        <h2>Date Scone</h2>
+        <div class="price">$3.20</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/buttercake.jpg" height="150" width="150" alt=" buttercake.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Cupcake with Butter cream</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.60</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/plainscone.jpg" height="120" width="120" alt="">
+        <h2>Plain Scone</h2>
+        <div class="price">$3.00</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/brownie.jpg" height="150" width="150" alt=" brownie.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Brownie</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$5.00</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/jamcream.jpg" height="120" width="120" alt="">
+        <h2>Scone with jam & cream</h2>
+        <div class="price">$5.00</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/cherry.jpg" height="150" width="150" alt=" cherry.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Cherry Slice</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/cupcake.jfif" height="120" width="120" alt="">
+        <h2>Cupcake with Lcing</h2>
+        <div class="price">$3.60</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/caramel.jpg" height="150" width="150" alt=" caramel.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Caramel Roll</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.90</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/buttercake.jpg" height="120" width="120" alt="">
+        <h2>Cupcake with Butter cream</h2>
+        <div class="price">$5.00</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
+    
+    <div class="partyorder">
+        <img src="photos/brownie.jpg" height="120" width="120" alt="">
+        <h2>Brownie</h2>
+        <div class="price">$5.00</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/hedgehog.jpg" height="150" width="150" alt=" hedgehog.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Hedgehog Slice</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.90</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/cherry.jpg" height="120" width="120" alt="">
+        <h2>Cherry Slice</h2>
+        <div class="price">$4.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/lemon.jpg" height="150" width="150" alt=" lemon.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Lemon Slice</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/caramel.jpg" height="120" width="120" alt="">
+        <h2>Caramel Roll</h2>
+        <div class="price">$4.90</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/croissant.jfif" height="150" width="150" alt=" croissant.jfif "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;"> Croissant </td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$5.00</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/hedgehog.jpg" height="120" width="120" alt="">
+        <h2>Hedgehog Slice</h2>
+        <div class="price">$4.90</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/almond.jpg" height="150" width="150" alt=" almond.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Almond Crossiant </td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$5.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/lemon.jpg" height="120" width="120" alt="">
+        <h2>Lemon Slice</h2>
+        <div class="price">$4.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/chocolate.jpg" height="150" width="150" alt=" chocolate.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Chocolate Croissant </td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$5.40</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/crossiant.jfif" height="120" width="120" alt="">
+        <h2>Croissant </h2>
+        <div class="price">$5.00</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/orange.jpg" height="150" width="150" alt=" orange.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Flourless Almond and Orange cake</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/almond.jpg" height="120" width="120" alt="">
+        <h2>Almond Crossiant</h2>
+        <div class="price">$5.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/assortedvegan.jpg" height="150" width="150" alt=" assortedvegan.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Assorted Vegan and Gluten free Slices</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$6.00</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/tart.jfif" height="150" width="150" alt=" tart.jfif "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Jam Tart</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$3.50</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/chocolate.jpg" height="120" width="120" alt="">
+        <h2>Chocolate Croissant</h2>
+        <div class="price">$5.40</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/neenish.jpeg" height="150" width="150" alt=" neenish.jpeg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Neenish Tart</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$3.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/orange.jpg" height="120" width="120" alt="">
+        <h2>Flourless Almond and Orange cake</h2>
+        <div class="price">$4.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/crackle.jpg" height="150" width="150" alt=" crackle.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Chocolate Crackle</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$3.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/assortedvegan.jpg" height="120" width="120" alt="">
+        <h2>Assorted Vegan and Gluten free Slices</h2>
+        <div class="price">$6.00</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/honey.jpg" height="150" width="150" alt=" honey.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Honey Joy</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$3.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/tart.jfif" height="120" width="120" alt="">
+        <h2>Jam Tart</h2>
+        <div class="price">$3.50</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/apple.jpg" height="150" width="150" alt=" apple.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Apple Scroll</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/neenish.jpeg" height="120" width="120" alt="">
+        <h2>Neenish Tart</h2>
+        <div class="price">$3.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/coffee.jpg" height="150" width="150" alt=" coffee.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Coffee Scroll</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/crackle.jpg " height="120" width="120" alt="">
+        <h2>Chocolate Crackle</h2>
+        <div class="price">$3.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/cookies.jpg" height="150" width="150" alt=" cookies.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">cookies</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$6.00</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/custard.jfif" height="150" width="150" alt=" custard.jfif"></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Custard Tart</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/honeyjoy.jpg " height="120" width="120" alt="">
+        <h2>Honey Joy</h2>
+        <div class="price">$3.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/vanilla.jpg" height="150" width="150" alt=" vanilla.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">vanilla Slices</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.90</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/apple.jpg " height="120" width="120" alt="">
+        <h2>Apple Scroll</h2>
+        <div class="price">$4.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/applecake.jfif" height="150" width="150" alt=" applecake.jfif "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Apple Cake</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$5.00</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/coffee.jpg " height="120" width="120" alt="">
+        <h2>Coffee Scroll</h2>
+        <div class="price">$4.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/lamington.jpg" height="150" width="150" alt=" lamington.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Lamington</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$4.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/cookies.jpg " height="120" width="120" alt="">
+        <h2>Cookies</h2>
+        <div class="price">$6.00</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/muffin.jpg" height="150" width="150" alt=" muffin.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Muffin</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$5.50</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/cookies.jpg " height="120" width="120" alt="">
+        <h2>Cookies</h2>
+        <div class="price">$6.00</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/eclair.jpg" height="150" width="150" alt=" eclair.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Chocolate Eclair</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$5.00</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+    <div class="partyorder">
+        <img src="photos/custard.jfif " height="120" width="120" alt="">
+        <h2>Custard Tart</h2>
+        <div class="price">$4.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/danish.jpg" height="150" width="150" alt=" danish.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Danish Assorted Fruit $  Custard</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$5.30</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
-        ?>
+    <div class="partyorder">
+        <img src="photos/vanilla.jpg " height="120" width="120" alt="">
+        <h2>vanilla Slices</h2>
+        <div class="price">$4.90</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
 
-    </table>
+    <div class="partyorder">
+        <img src="photos/applecake.jfif " height="120" width="120" alt="">
+        <h2>Apple Cake</h2>
+        <div class="price">$5.00</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
+       
+    <div class="partyorder">
+        <img src="photos/lamington.jpg " height="120" width="120" alt="">
+        <h2>Lamington</h2>
+        <div class="price">$4.80</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
+
+    <div class="partyorder">
+        <img src="photos/muffin.jpg " height="120" width="120" alt="">
+        <h2>Muffin</h2>
+        <div class="price">$5.50</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
+
+    <div class="partyorder">
+        <img src="photos/eclair.jpg" height="120" width="120" alt="">
+        <h2>Chocolate Eclair</h2>
+        <div class="price">$5.00</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
+
+    <div class="partyorder">
+        <img src="photos/muffin.jpg " height="120" width="120" alt="">
+        <h2>Muffin</h2>
+        <div class="price">$5.50</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
+     
+    <div class="partyorder">
+        <img src="photos/eclair.jpg " height="120" width="120" alt="">
+        <h2>Chocolate Eclair</h2>
+        <div class="price">$5.50</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
+
+    <div class="partyorder">
+        <img src="photos/danish.jpg " height="120" width="120" alt="">
+        <h2>Danish Assorted Fruit $  Custard</h2>
+        <div class="price">$5.50</div>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>
+
+</div>
+                        
+
+            
 </body>
 </html>

@@ -1,6 +1,12 @@
 <?php
 
-include("cbdconnection.php");
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$dbname = 'cbd_bakery';
+
+//create connection 
+$conn = mysqli_connect($host, $user, $pass, $dbname);
     if(isset($_POST['search']))
     ?>
 
@@ -17,12 +23,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('photos/bg5.jfif');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center top;
-    background-color: #f4f4f4;
-    background-repeat: no-repeat;
+    background-color: rgb(238 231 255 );
     margin: 0;
    padding: 0;
    font-family: Arial, sans-serif;
@@ -30,79 +31,209 @@ body {
 
 h1 {
     
-    position: fixed;
-            left: 50%;
-           margin-top: 5px;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            color: red;
+    
+            font-size: 2rem;
+            color: rgb(236 72 153);
             font-weight: bold;
-            background-color: rgba(255, 255, 255, 0.8);
             padding: 10px;
             border-radius: 5px;
+            text-shadow: 2px 2px #FF0000;
     
-    
 
 }
 
-/* Table Styles */
-table {
-    width: 80%;
-    margin: 30px auto;
-    border-collapse: collapse;
-    background-color: none;
-    border: 1px solid #ddd;
+.breakfastitems{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1.5rem;
+  text-align: center; 
 }
 
-
-th, td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+.breakfastitems .breakfast{
+    background-color: var(--card-color);
+    padding: 3rem 2rem;
+    text-align: center; 
 }
 
-th {
-    background-color: #f2f2f2;
-    color: red;
-    font-size: 22px;
-}
+.breakfastitems .breakfast h2{
+    color: black;
+    font-size: 1.3rem;
 
-td {
-    font-size: 18px;
-    color: #333;
+}
+.breakfastitems .breakfast .price{
+    color: black;
+    font-size: 1.3rem;
+
 }
 
 img {
     border-radius: 15px;
 }   
-        .btn {
-            line-height: 2;
+.button {
+            line-height: 1;
             display: inline-block;
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             text-decoration: none;
             border-radius: 10px;
             color: black;
             padding: 8px;
-            background-color: lightblue;
-            font-size: 20px;
+            background-color: lightpink;
+            font-size: 15px;
             font-weight: bold;
         }
-        .btn:hover {
+        .button:hover {
             color: black;
+        }
+
+.navbar ul{
+    
+   list-style-type: none;
+   padding: 10px;
+   margin: 0px;
+   overflow: hidden;
+
+}
+/* Navbar styling */
+.navbar ul {
+    
+   display: flex;
+   gap: 30px; /* Space between navbar links */
+}
+.navbar a{
+   color: black;
+   text-decoration: none;
+   padding: 15px;
+   text-align:right;
+   font-style: italic;
+   font-size:25px;
+}
+.navbar a:hover{
+   background-color: lightcoral;
+}
+
+.active{
+
+background-color: purple; 
+}
+
+.header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;;
+            background-color: white; /* Default color */
+            padding: 5px 0; /* Default padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transitions */
+        }
+
+        .header.scrolled {
+            background-color: #f0f0f0; /* Color when scrolled */
+            padding: 0px 0; /* Smaller padding when scrolled */
+        }
+
+        .logo {
+            display: flex;
+        }
+
+        .logo img {
+            height: 50px; /* Smaller logo size when scrolled */
+            width: auto;
+            transition: height 0.3s ease; /* Smooth transition for logo size */
+        }
+
+        .header.scrolled .logo img {
+            height: 40px; /* Smaller logo size when scrolled */
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-family: italic bold;
+            margin: 0 15px; /* Adjusted margin */
+            color: #333; /* Text color */
+            position: relative;
+            font-size: 20px;
+            transition: color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .nav-menu a:hover {
+            color: #555; /* Hover color */
+        }
+        .header.scrolled.nav-menu a {
+            
+            font-size: 15px;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 35px;
+            background-color: #fff;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .search-cart {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .cart-icon {
+            margin-left: 20px;
+            font-size: 20px;
+            cursor: pointer;
         }
     </style>
 
 <body>
-<a href="categorypage.php" class="btn">Back</a>
-    <h1 style="text-align:center; color:red;">Hot Breakfast</h1>
+    <!-- header section -->
 
-    <table cellspacing="0" cellpadding="10" style="width:100%; margin:auto;">
-        <tr>
-            <th style="text-align:center;font-size:22px;color:red;">Image</th>
-            <th style="text-align:center;width:130px;font-size:22px;color:red;">Food Item</th>
-            <th style="text-align:center;width:130px;font-size:22px;color:red;">Price</th>
-            <th style="text-align:center;font-size:22px;color:red;">Action</th>
-        </tr>
+    <header class="header">
+        <div class="logo">
+            <img src="photos/homelogo5.jpg" alt="Coffee Shop Logo"> <!-- Adjusted logo path -->
+        </div>
+        <div class="nav-menu">
+            <a href="Homepage.php">Home</a>
+            <div class="dropdown">
+                <a href="productspage.php">Menu</a>
+            </div>
+            <a href="contact.php">Contact</a>
+            <a href="#about">About Us</a>
+        </div>
+        <div class="search-cart">
+            <input type="text" class="search-bar" placeholder="Search...">
+            <div class="cart-icon">&#128722;</div>
+        </div>
+    </header>
+   <br><br><br><br><br>
+
+    <h1 style="text-align:center; color:rgb(236 72 153);">Hot Breakfast</h1>
+
+    
+        
 
         <?php
                   // Array of products
@@ -120,62 +251,61 @@ img {
                ];
 
               // Loop through each product and generate a table row
-                  foreach ($products as $product) 
-            echo <tr>
-                <td style="text-align:center;"><img src="photos/fruit.jfif" height="150" width="150" alt=" fruit.jfif "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Fruit Toast</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$6.00</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
+                  foreach ($products as $product); 
+                  ?>
 
-                </tr>
-                <tr>
-                <td style="text-align:center;"><img src="photos/ham.jfif" height="150" width="150" alt=" ham.jfif "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Ham & Cheese Croissant</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$8.50</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
+<div class="breakfastitems">
 
-                <tr>
-                <td style="text-align:center;"><img src="photos/hamcheese.jfif" height="150" width="150" alt=" hamcheese.jfif"></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Ham, Cheese, Tomato Toastie</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$8.20</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
-
-                <tr>
-                <td style="text-align:center;"><img src="photos/eggbacon.jpg" height="150" width="150" alt=" eggbacon.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;"> Doubleegg & Bacon Roll</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$13.50</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
-
-                <tr>
-                <td style="text-align:center;"><img src="photos/banana.jpg" height="150" width="150" alt=" banana.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;"> Banana Bread</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$6.00/td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
-
-                <tr>
-                <td style="text-align:center;"><img src="photos/tomato.jfif" height="150" width="150" alt=" tomato.jfif "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Cheese & Tomato Croissant</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$8.50</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
-
-                <tr>
-                <td style="text-align:center;"><img src="photos/baconegg.jpg" height="150" width="150" alt=" baconegg.jpg "></td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">Egg, Bacon & Cheese Muffin</td>
-                <td style="text-align:center;color:black;font-size:20px;width: 250px;">$6.80</td>
-                <td style="text-align:center;"><a href="#" class="btn">Add to cart</a></td>
-                </tr>
-
-               
+    <div class="breakfast">
+        <img src="photos/fruit.jfif"  height="160" width="160" alt="">
+        <h2>Fruit Toast</h2>
+        <div class="price">$6.00</div>  <br>
+        <a href="add_to_cart.php" class="button" >Add to cart</a>
+    </div>
 
 
+    <div class="breakfast">
+        <img src="photos/ham.jfif"  height="160" width="160" alt="">
+        <h2>Ham & Cheese Croissant</h2>
+        <div class="price">$8.50</div>   <br>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>      
 
-        ?>
+    <div class="breakfast">
+        <img src="photos/hamcheese.jfif"  height="160" width="160" alt="">
+        <h2>Ham, Cheese, Tomato Toastie</h2>
+        <div class="price">$8.20</div>   <br>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>     
 
-    </table>
+    <div class="breakfast">
+        <img src="photos/eggbacon.jpg"  height="160" width="160" alt="">
+        <h2>Doubleegg & Bacon Roll</h2>
+        <div class="price">$13.50</div>   <br>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>     
+
+    <div class="breakfast">
+        <img src="photos/banana.jpg"  height="160" width="160" alt="">
+        <h2>Banana Bread</h2>
+        <div class="price">$6.00</div>   <br>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>     
+
+    <div class="breakfast">
+        <img src="photos/tomato.jfif"  height="160" width="160" alt="">
+        <h2>Cheese & Tomato Croissant</h2>
+        <div class="price">$8.50</div>   <br>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>     
+
+    <div class="breakfast">
+        <img src="photos/baconegg.jpg"  height="160" width="160" alt="">
+        <h2>Egg, Bacon & Cheese Muffin</h2>
+        <div class="price">$6.80</div>   <br>
+        <a href="add_to_cart.php" class="button">Add to cart</a>
+    </div>     
+
+    </div>        
 </body>
 </html>
