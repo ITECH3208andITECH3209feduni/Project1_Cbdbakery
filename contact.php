@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "cbd_bakery";
+$dbname = "cbdbakery";
 //Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $email = $conn->real_escape_string($_POST["email"]);
     $message = $conn->real_escape_string($_POST["message"]);
 
-    $sql = "INSERT INTO queries (name, email, message) VALUES ('$name', '$email', '$message')";
+    $sql = "INSERT INTO contact (name, email, message) VALUES ('$name', '$email', '$message')";
     
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('Message sent successfully.');</script>";
