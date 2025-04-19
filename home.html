@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBD Bakery</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+
+
+<body >
+
+
+
+<header class="header">
+
+<div class="logo">
+            <img src="photos/logo1.png" alt="Coffee Shop Logo"> <!-- Adjusted logo path -->
+        </div>
+        
+        <div class="nav-menu">
+            <a href="Home.html">Home</a>
+            <div class="dropdown">
+                <a href="menu.html">Menu</a>
+            </div>
+            
+            <a href="contactus.html">Contact</a>
+            <a href="#about">About Us</a>
+            
+        </div>
+        <div class="search-cart">
+            
+            <div class="cart-icon">&#128722;</div>
+        </div>
+    </header>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const scrollPosition = window.scrollY;
+
+            if (scrollPosition > 100) { // Change 100 to the scroll position at which you want to trigger the effect
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+
+
+<!-- Hero Section with Slideshow -->
+<div class="hero">
+    <h1>Welcome to CBD Bakery</h1>
+</div>
+
+
+ <!-- our products section -->
+ <section class="products" id="products">
+        
+        <h1  class="heading"> <span> Our Favorite Menu </span>   
+        </h1>
+        <div class="gallery">
+            
+            <form action="homepage.php" method="post">
+
+            <a target="_blank" href="#">
+                <img src="photos/pie.jpg" alt="CBD Pie">
+            </a>
+            <div class="desc">Apple Pie</div>
+        </div>
+        
+        <div class="gallery">
+            <a target="_blank" href="#">
+                <img src="photos/donuts.jfif" alt="CBD Donuts">
+            </a>
+            <div class="desc">Chocolate Donuts</div>
+        </div>
+        
+        <div class="gallery">
+            <a target="_blank" href="#">
+                <img src="photos/breakfast.jpg" alt="CBD Brownies">
+            </a>
+            <div class="desc">Breakfast</div>
+        </div>
+        
+        <div class="gallery">
+            <a target="_blank" href="#">
+                <img src="photos/cakes.jpg" alt="CBD Cake">
+            </a>
+            <div class="desc">Cakes</div>
+        </div>
+             </section>
+            <!-- our products section -->
+            
+        
+        <!-- About Us Section -->
+        <section id="about-us" style="background-color: #F0F8FF; padding: 10px 2px; font-family: 'Segoe UI', sans-serif;">
+          <div style="max-width: 1000px; margin: auto;">
+            <h2 style="text-align: center; color: #333; font-size: 2.5rem; margin-bottom: 30px; text-shadow: 2px 2px 4px #000000;">About Us</h2>
+        
+            <!-- Block 1: Image then Text -->
+            <div style="display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 60px;">
+              <div style="flex: 1; min-width: 300px; padding: 10px;">
+                <img src="photos/about1.jpg" alt="CBD Bakery Exterior" style="width: 450px; height:350px; border-radius: 12px; margin-left: -200px;">
+              </div>
+              <div style="flex: 1; min-width: 300px; padding: 10px; font-size: 1.4rem; color: #444; line-height: 1.7; font-family: Georgia, serif; margin-left: -20px;">
+                <p>Welcome to <strong>CBD Bakery</strong> – where wellness meets indulgence. We specialize in baking delicious, CBD-infused treats that soothe your mind while satisfying your sweet tooth.</p>
+              </div>
+              <div style="flex: 1; min-width: 300px; padding: 10px;">
+                <img src="photos/about2.jpg" alt="CBD Pastries" style="width: 400px; height:400px; border-radius: 12px; margin-right: 50px;">
+              </div>
+            </div>
+        
+        
+            <div style="display: flex; flex-wrap: wrap; align-items: center; margin-top: -100px;">
+            <div style="flex: 1; min-width: 300px; padding: 10px; font-size: 1.2rem; color: #444; line-height: 1.8; margin-left: -200px;font-family: Georgia, serif; ">
+                <p><strong>CBD Bakery</strong> is a traditional country-style Bakery Cafe located in Melbourne's CBD. With over 30 years in the baking industry, all our products are made onsite with fresh ingredients, providing fast food for busy people.</p>
+              </div>
+              <div style="flex: 1; min-width: 300px; padding: 10px;">
+                <img src="photos/about3.jpg" alt="CBD Bakery Exterior" style="width: 400px; height:300px; border-radius: 12px;">
+              </div>
+              <div style="flex: 1; min-width: 300px; padding: 10px; font-size: 1.4rem; color: #444; line-height: 1.7; font-family: Georgia, serif; margin-right:-150px; ">
+              <p>Made fresh every day, by hand, to your order. Simple to order, delicious to eat.</p>
+              </div>
+        
+         </div>
+        
+        
+          </div>
+        </section>
+        <br><br>
+        
+        
+        
+        <section id="party-orders" style="background-color: #D3D3D3; padding: 60px 20px; font-family: 'Segoe UI', sans-serif;">
+          <div style="max-width: 1200px; margin: auto;">
+            
+            <!-- Title & Quote -->
+            <div style="text-align: center; margin-bottom: 50px;">
+              <h2 style="font-size: 3rem; color: #333; text-shadow: 1px 1px 3px #000;">Party Orders</h2>
+              <p style="font-size: 1.2rem; color: #555; max-width: 600px; margin: auto;">"Celebrate every occasion with the perfect bite – handcrafted CBD delights, made fresh for your party!"</p>
+            </div>
+        
+            <!-- Menu Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px 60px;">
+        
+              <!-- Party Order Item -->
+              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                  <img src="photos/sausage.jpg" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <h3 style="margin: 0; font-size: 1.1rem;">Sausage Roll</h3>
+                    <small style="color: #888;">Dozenprice - $30</small>
+                  </div>
+                </div>
+                <div>
+                  <span style="color: goldenrod; font-size: 1.2rem; font-weight: bold;">$3.50</span><br>
+                  <a href="add_to_cart.php" style="font-size: 0.8rem; text-decoration: none; color: #fff; background: #88cc9a; padding: 6px 12px; border-radius: 5px;">Add to cart</a>
+                </div>
+              </div>
+        
+              <!-- Repeat Party Order Items (copy-paste and change data) -->
+        
+              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                  <img src="photos/quiche.jpg" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <h3 style="margin: 0; font-size: 1.1rem;">Quiche Lorraine</h3>
+                    <small style="color: #888;">Dozenprice - $30</small>
+                  </div>
+                </div>
+                <div>
+                  <span style="color: goldenrod; font-size: 1.2rem; font-weight: bold;">$3.50</span><br>
+                  <a href="add_to_cart.php" style="font-size: 0.8rem; text-decoration: none; color: #fff; background: #88cc9a; padding: 6px 12px; border-radius: 5px;">Add to cart</a>
+                </div>
+              </div>
+        
+              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                  <img src="photos/spinach.jpg" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <h3 style="margin: 0; font-size: 1.1rem;">Spinach & Cheese Filo</h3>
+                    <small style="color: #888;">Dozenprice - $30</small>
+                  </div>
+                </div>
+                <div>
+                  <span style="color: goldenrod; font-size: 1.2rem; font-weight: bold;">$3.50</span><br>
+                  <a href="add_to_cart.php" style="font-size: 0.8rem; text-decoration: none; color: #fff; background: #88cc9a; padding: 6px 12px; border-radius: 5px;">Add to cart</a>
+                </div>
+              </div>
+        
+              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                  <img src="photos/partypies.jpg" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <h3 style="margin: 0; font-size: 1.1rem;">Party Pies</h3>
+                    <small style="color: #888;">Dozenprice - $30</small>
+                  </div>
+                </div>
+                <div>
+                  <span style="color: goldenrod; font-size: 1.2rem; font-weight: bold;">$3.50</span><br>
+                  <a href="add_to_cart.php" style="font-size: 0.8rem; text-decoration: none; color: #fff; background: #88cc9a; padding: 6px 12px; border-radius: 5px;">Add to cart</a>
+                </div>
+              </div>
+        
+              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                  <img src="photos/vegetable.jpg" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <h3 style="margin: 0; font-size: 1.1rem;">Quiche Vegetable</h3>
+                    <small style="color: #888;">Dozenprice - $30</small>
+                  </div>
+                </div>
+                <div>
+                  <span style="color: goldenrod; font-size: 1.2rem; font-weight: bold;">$3.50</span><br>
+                  <a href="add_to_cart.php" style="font-size: 0.8rem; text-decoration: none; color: #fff; background: #88cc9a; padding: 6px 12px; border-radius: 5px;">Add to cart</a>
+                </div>
+              </div>
+        
+              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                  <img src="photos/vegpastie.jpg" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+                  <div>
+                    <h3 style="margin: 0; font-size: 1.1rem;">Vegan Pastie (min 6)</h3>
+                    <small style="color: #888;">Dozenprice - $30</small>
+                  </div>
+                </div>
+                <div>
+                  <span style="color: goldenrod; font-size: 1.2rem; font-weight: bold;">$3.50</span><br>
+                  <a href="add_to_cart.php" style="font-size: 0.8rem; text-decoration: none; color: #fff; background: #88cc9a; padding: 6px 12px; border-radius: 5px;">Add to cart</a>
+                </div>
+              </div>
+        
+            </div>
+          </div>
+        </section>
+        
+        
+        
+        
+        <!-- Product Gallery Section -->
+        <div id="product-gallery">
+            <div class="gallery-container">
+                <div class="gallery-item large">
+                    <img src="pics/pic5.jpg" alt="Product 1"> <!-- Replace with actual product images -->
+                </div>
+                <div class="gallery-item medium">
+                    <img src="pics/pic2.jpg" alt="Product 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="pics/pic1.jpg" alt="Product 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="pics/pic3.jpg" alt="Product 4">
+                </div>
+                <div class="gallery-item medium">
+                    <img src="photos/homebrownie.jpg" alt="Product 5">
+                </div>
+                <div class="gallery-item large">
+                    <img src="pics/pic4.png"  alt="Product 6">
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+          <h2 class="section-title">Our Customers Say</h2>
+          <div class="reviews-container">
+            
+            <div class="review-card">
+              <p class="review-text">
+                “We were in the next building and went here as it looks like a gem. No-frills simple bakery serving different pastries, cakes, but more importantly piping hot pies. We tried the traditional meat pie and the pepper steak ones. Between us, we preferred the traditional ones. Prices were reasonable and coffee was great! Do come before lunch time as it can get quite packed.”
+              </p>
+            </div>
+        
+            <div class="review-card">
+              <p class="review-text">
+                “Visiting from Sydney and working in an office nearby, I decided to pop in and see what they had. Such a great vibe inside and witnessed some lovely and beautiful people busily working behind the counter. Such a great selection of baked goods — everything looked delicious and extremely tempting.”
+              </p>
+            </div>
+        
+            <div class="review-card">
+              <p class="review-text">
+                “I visited CBD Bakery at Bourke St for breakfast and coffee. The place is cozy and inviting. The coffee was excellent, and the breakfast options were delicious. The service was friendly and efficient. Not crowded, perfect for a relaxed morning. Highly recommended!”
+              </p>
+            </div>
+        
+          </div>
+        </section>
+        
+        
+        <!-- Footer -->
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <img src="photos/homelogo.jpg" alt="CBD Bakery Logo" class="footer-logo"> <!-- Replace with actual logo -->
+                </div>
+        
+                <div class="footer-section">
+                    <h3>Main Street</h3>
+                    <p>480 Bourke Street,<br> Melbourne Vic 3000</p><br><br>
+                    <p><a href=https://www.google.com/maps/place/480+Bourke+St,+Melbourne+VIC+3000/@-37.8150957,144.9568927,17z/data!3m1!4b1!4m6!3m5!1s0x6ad65d4b6b8a80ab:0x45b08aad0a01b7c9!8m2!3d-37.8151!4d144.959473!16s%2Fg%2F11c5p_8vlb?entry=ttu&g_ep=EgoyMDI0MTAwOS4wIKXMDSoASAFQAw%3D%3D>Get Directions</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Second Ave</h3>
+                    <p>Shop 4, 118-126 Queens St,<br> Melbourne Vic 3000</p> <br><br>
+                    <p><a href="https://maps.google.com">Get Directions</a></p>
+                </div>
+        
+                <div class="footer-section">
+                    <h3>Contacts</h3>
+                    <p><a href="mailto:hello@cbdbakery.com">cbdbakery@gmail.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Socials</h3>
+                    <a href="https://www.instagram.com/cbdbakery" target="_blank">
+                        <img src="photos/insta.jpg" alt="Instagram Logo" class="social-logo"> <!-- Replace with Instagram logo -->
+                    </a>
+                    <a href="https://www.facebook.com/cbdbakery" target="_blank">
+                        <img src="photos/fb.jpg" alt="Facebook Logo" class="social-logo"> <!-- Replace with Facebook logo -->
+                    </a>
+                </div>
+            </div>
+            <p>&copy; 2024 CBD Bakery | All rights reserved</p>
+        </footer>
+        
+        
+            
+        </body>

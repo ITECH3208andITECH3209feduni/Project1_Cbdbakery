@@ -13,12 +13,12 @@
 <header class="header">
         
         <div class="nav-menu">
-            <a href="Homepage.php">Home</a>
+            <a href="Home.html">Home</a>
             <div class="dropdown">
-                <a href="menu.php">Menu</a>
+                <a href="menu.html">Menu</a>
             </div>
             
-            <a href="contact.php">Contact</a>
+            <a href="contactus.html">Contact</a>
             <a href="#about">About Us</a>
             
 
@@ -44,9 +44,27 @@
     <button class="filter-btn" data-category="breakfast">Breakfast</button>
     <button class="filter-btn" data-category="cake">Cakes</button>
 </div>
+<script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.partyorder');
 
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.getAttribute('data-category');
+            
+            items.forEach(item => {
+                if (item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
 <!-- Product List -->
 <div class="orders">
+
     <div class="partyorder pie show">
         <img src="photos/plainpie.jfif" height="130" width="130">
         <h2>Plain pie</h2>
@@ -189,77 +207,77 @@
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/plainscone.jpg" height="120" width="120" alt="">
         <h2>Plain Scone</h2>
         <div class="price">$3.00</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/jamcream.jpg" height="120" width="120" alt="">
         <h2>Scone with jam & cream</h2>
         <div class="price">$5.00</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/cupcake.jfif" height="120" width="120" alt="">
         <h2>Cupcake with Lcing</h2>
         <div class="price">$3.60</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/buttercake.jpg" height="120" width="120" alt="">
         <h2>Cupcake with Butter cream</h2>
         <div class="price">$5.00</div>
         <a href="" class="button">Add to cart</a>
     </div>
     
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/brownie.jpg" height="120" width="120" alt="">
         <h2>Brownie</h2>
         <div class="price">$5.00</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/cherry.jpg" height="120" width="120" alt="">
         <h2>Cherry Slice</h2>
         <div class="price">$4.80</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/caramel.jpg" height="120" width="120" alt="">
         <h2>Caramel Roll</h2>
         <div class="price">$4.90</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/hedgehog.jpg" height="120" width="120" alt="">
         <h2>Hedgehog Slice</h2>
         <div class="price">$4.90</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/lemon.jpg" height="120" width="120" alt="">
         <h2>Lemon Slice</h2>
         <div class="price">$4.80</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/crossiant.jfif" height="120" width="120" alt="">
         <h2>Croissant </h2>
         <div class="price">$5.00</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/almond.jpg" height="120" width="120" alt="">
         <h2>Almond Crossiant</h2>
         <div class="price">$5.80</div>
@@ -267,42 +285,42 @@
     </div>
 
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/chocolate.jpg" height="120" width="120" alt="">
         <h2>Chocolate Croissant</h2>
         <div class="price">$5.40</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/orange.jpg" height="120" width="120" alt="">
         <h2>Flourless Almond and Orange cake</h2>
         <div class="price">$4.80</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/assortedvegan.jpg" height="120" width="120" alt="">
         <h2>Assorted Vegan and Gluten free Slices</h2>
         <div class="price">$6.00</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/tart.jfif" height="120" width="120" alt="">
         <h2>Jam Tart</h2>
         <div class="price">$3.50</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/neenish.jpeg" height="120" width="120" alt="">
         <h2>Neenish Tart</h2>
         <div class="price">$3.80</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/crackle.jpg " height="120" width="120" alt="">
         <h2>Chocolate Crackle</h2>
         <div class="price">$3.80</div>
@@ -310,102 +328,103 @@
     </div>
 
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/honeyjoy.jpg " height="120" width="120" alt="">
         <h2>Honey Joy</h2>
         <div class="price">$3.80</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/apple.jpg " height="120" width="120" alt="">
         <h2>Apple Scroll</h2>
         <div class="price">$4.80</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/coffee.jpg " height="120" width="120" alt="">
         <h2>Coffee Scroll</h2>
         <div class="price">$4.80</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/cookies.jpg " height="120" width="120" alt="">
         <h2>Cookies</h2>
         <div class="price">$6.00</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/cookies.jpg " height="120" width="120" alt="">
         <h2>Cookies</h2>
         <div class="price">$6.00</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/custard.jfif " height="120" width="120" alt="">
         <h2>Custard Tart</h2>
         <div class="price">$4.80</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/vanilla.jpg " height="120" width="120" alt="">
         <h2>vanilla Slices</h2>
         <div class="price">$4.90</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/applecake.jfif " height="120" width="120" alt="">
         <h2>Apple Cake</h2>
         <div class="price">$5.00</div>
         <a href="" class="button">Add to cart</a>
     </div>
        
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/lamington.jpg " height="120" width="120" alt="">
         <h2>Lamington</h2>
         <div class="price">$4.80</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/muffin.jpg " height="120" width="120" alt="">
         <h2>Muffin</h2>
         <div class="price">$5.50</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder  cake show">
         <img src="photos/eclair.jpg" height="120" width="120" alt="">
         <h2>Chocolate Eclair</h2>
         <div class="price">$5.00</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/muffin.jpg " height="120" width="120" alt="">
         <h2>Muffin</h2>
         <div class="price">$5.50</div>
         <a href="" class="button">Add to cart</a>
     </div>
      
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/eclair.jpg " height="120" width="120" alt="">
         <h2>Chocolate Eclair</h2>
         <div class="price">$5.50</div>
         <a href="" class="button">Add to cart</a>
     </div>
 
-    <div class="partyorder partyorder cake show">
+    <div class="partyorder cake show">
         <img src="photos/danish.jpg " height="120" width="120" alt="">
         <h2>Danish Assorted Fruit $  Custard</h2>
         <div class="price">$5.50</div>
-        <a href="" class="button">Add to cart</a>
+        <a href="#" class="button" onclick="event.preventDefault();">Add to cart</a>
+
     </div>
 
 
@@ -449,5 +468,8 @@
     <p>&copy; 2024 CBD Bakery | All rights reserved</p>
 </footer>
 
+
 </body>
 </html>
+
+

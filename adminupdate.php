@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$dbname = 'cbd_bakery';
+$dbname = 'cbdbakery';
 
 // Create connection
 $conn = mysqli_connect($host, $user, $pass, $dbname);
