@@ -1,0 +1,265 @@
+/* Reset and base styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #c0392b;
+  }
+  
+  h1, h2, h3 {
+    color: #c0392b;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* Header */
+  header {
+    background-color: white;
+    color: black;
+    padding: 40px 0;
+    text-align: center;
+  
+  }
+  
+  
+  header nav a {
+    color: black;
+    margin: 0 15px;
+    font-weight: bold;
+  }
+  
+  header nav a:hover {
+    text-decoration: underline;
+  }
+
+  .reviews-section {
+    padding: 60px 20px;
+    background-color: #f9f6f2;
+    text-align: center;
+    }
+    
+    .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-family: 'Georgia', serif;
+    color: #333;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+    }
+    
+    .reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    }
+    
+    .review-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding: 25px;
+    max-width: 350px;
+    flex: 1 1 300px;
+    transition: transform 0.3s ease;
+    }
+    
+    .review-card:hover {
+    transform: translateY(-5px);
+    }
+    
+    
+    
+    .review-author {
+    font-weight: bold;
+    color: #8b5e3c;
+    }
+    
+  
+  
+  /* Footer */
+  footer {
+    background-color: #eee;
+    padding: 20px;
+    text-align: center;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  /* Home Banner */
+  .banner {
+    padding: 60px 20px;
+    text-align: center;
+    background: #fefefe;
+  }
+  
+  .banner h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Buttons */
+  .add-btn,
+  .delete-btn,
+  .blue-btn,
+  .green-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .add-btn {
+    background-color: #c0392b;
+    color: white;
+  }
+  
+  .add-btn:hover {
+    background-color: #a93226;
+  }
+  
+  .delete-btn {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  .blue-btn {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .green-btn {
+    background-color: #27ae60;
+    color: white;
+  }
+  
+  /* Menu Grid */
+  .menu-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  .menu-item {
+    width: 260px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .menu-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .menu-item img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(226, 30, 8, 0.223);
+  }
+  
+  .qty-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .qty-controls button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Forms */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .menu-item {
+      width: 100%;
+    }
+  
+    .menu-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  /* Typography and layout */
+h1, h3 {
+    color: #b02a1f;
+    margin-top: 1.5rem;
+  }
+  
+  table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .btn, .add-btn, button[type="submit"] {
+    padding: 10px 16px;
+    background-color: #b02a1f;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .btn:hover {
+    background-color: #8e1f18;
+  }
+  
+  .checkout-form {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .checkout-form input, .checkout-form textarea, .checkout-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  
+
+  
