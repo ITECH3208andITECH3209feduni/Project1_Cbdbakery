@@ -1,0 +1,284 @@
+/* Center the login box on the screen */
+/* admin.css */
+
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f4f4f4;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #c0392b;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #a8432f;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #8e3928;
+}
+
+.error-msg {
+  color: red;
+  background: #ffeaea;
+  border: 1px solid #f5c2c2;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.logo-container {
+  height: 100px; /* Fixed height of header logo area */
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: auto;
+  max-height: 165px; /* Visually big but won’t push header height */
+  transform: scale(1.5); /* Make the logo appear bigger */
+  transform-origin: left center;
+}
+
+
+
+.admin-dashboard h2, .admin-dashboard h3 {
+  color: #b02a1f;
+  margin-top: 40px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+/* Form styling */
+.admin-dashboard form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.admin-dashboard form input,
+.admin-dashboard form textarea,
+.admin-dashboard form select {
+  flex: 1 1 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.admin-dashboard form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #c0392b;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.admin-dashboard form button:hover {
+  background-color: #a93226;
+}
+
+/* Table styling */
+.admin-dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.admin-dashboard table th,
+.admin-dashboard table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.admin-dashboard table th {
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: 600;
+}
+
+.admin-dashboard table img {
+  border-radius: 6px;
+  max-height: 60px;
+}
+
+.admin-dashboard table td {
+  word-wrap: break-word;
+  max-width: 250px;
+}
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+/* Main Content */
+.main-content {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  padding: 30px;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: #c0392b;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  border-radius: 6px;
+  overflow: hidden;
+}
+th, td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+th {
+  background-color: #c0392b;
+  color: white;
+}
+
+/* Buttons */
+button, .btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.green-btn {
+  background-color: #27ae60;
+  color: white;
+}
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+.blue-btn {
+  background-color: #3498db;
+  color: white;
+}
+.add-btn {
+  background-color: #8e44ad;
+  color: white;
+}
+.logout {
+  background-color: #555;
+  color: white;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* Form Styling */
+form {
+  margin: 10px 0;
+}
+form input, form textarea, form select {
+  padding: 8px;
+  margin: 5px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+textarea {
+  resize: vertical;
+}
+input[type="file"] {
+  border: none;
+}
+
+/* Image Styling */
+img {
+  max-width: 60px;
+  border-radius: 5px;
+}
+.admin-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+

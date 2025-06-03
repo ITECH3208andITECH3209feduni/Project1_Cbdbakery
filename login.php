@@ -17,20 +17,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include('../partials/header.php');
 ?>
 
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
 
-<div class="container">
-  <h1>Admin Login</h1>
+<main class="login-main"> <!-- Wrapper to isolate layout -->
+<div class="login-container">
+  <div class="login-box">
+    <h1>Admin Login</h1>
 
-  <?php if (!empty($error)): ?>
-    <p style="color: red; font-weight: bold;"><?= $error ?></p>
-  <?php endif; ?>
+    <?php if (!empty($error)): ?>
+      <p class="error-msg"><?= $error ?></p>
+    <?php endif; ?>
 
-  <form method="post">
-    <input type="text" name="admin_id" placeholder="Admin ID or Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit" class="add-btn">Login</button>
-  </form>
+    <form method="post">
+      <input type="text" name="admin_id" placeholder="Admin ID or Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+  </div>
 </div>
+</main>
 
 <?php include('../partials/footer.php'); ?>
