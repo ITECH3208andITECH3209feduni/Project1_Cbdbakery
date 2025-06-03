@@ -4,7 +4,7 @@ require('../includes/functions.php');
 include('../partials/header.php');
 
 $conn = dbConnect();
-$category = 'Breakfast';
+$category = 'Pies';
 
 $result = $conn->prepare("SELECT * FROM products WHERE category = ? ORDER BY name");
 $result->bind_param("s", $category);
@@ -37,6 +37,6 @@ $items = $result->get_result()->fetch_all(MYSQLI_ASSOC);
       </div>
     <?php endforeach; ?>
   </div>
-</div> 
+</div>
 <br><br>
 <?php include('../partials/footer.php'); ?>

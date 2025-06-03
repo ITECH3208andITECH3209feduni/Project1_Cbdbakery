@@ -1,0 +1,121 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f6ebe2;
+  margin: 0;
+  padding: 0;
+  color: #2e2e2e;
+}
+
+.cart-page {
+  max-width: 1100px;
+  margin: 60px auto;
+  background: #f6ebe2;
+  padding: 20px;
+}
+
+.cart-page h1 {
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  color: #2e1b0f;
+  text-align: center;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.cart-table thead th {
+  text-align: center;
+  padding: 12px 10px;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: normal;
+  color: black;
+  border-bottom: 1px solid #d8c7b9;
+}
+
+.cart-table td {
+  padding: 20px 10px;
+  vertical-align: middle;
+  font-size: 16px;
+}
+
+.cart-table input[type="number"] {
+  width: 50px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.cart-table .btn {
+  padding: 6px 12px;
+  background-color: powderblue;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  color: darkblue;
+}
+
+
+.cart-table .btn:hover {
+  background-color: peachpuff;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cart-actions .btn {
+  padding: 12px 24px;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #2e2e2e;
+  background-color: #fff;
+  color: #2e2e2e;
+  transition: transform 0.3s ease;
+}
+
+.cart-actions .btn--more:hover {
+  background-color: #e0d2c3;
+}
+
+.cart-actions .btn--checkout {
+  background-color: #2e2e2e;
+  color: white;
+}
+
+.cart-actions .btn--checkout:hover {
+  background-color: #1a1a1a;
+}
+
+h3 {
+  text-align: right;
+  font-size: 20px;
+  color: #2e2e2e;
+  margin-bottom: 30px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #c0392b;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  color: black;
+  transform: scale(1.0);
+}
+

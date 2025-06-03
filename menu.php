@@ -1,9 +1,12 @@
 <?php
-include('../partials/header.php');
-require('../includes/functions.php');
-require('../db/db_init.php');
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-$db = dbConnect();
+require('../includes/functions.php');
+include('../partials/header.php');
+
+$conn = dbConnect();
 
 // Handle Add to Cart
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product'], $_POST['price'], $_POST['type'], $_POST['quantity'])) {
@@ -14,94 +17,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product'], $_POST['pr
         'quantity' => (int)$_POST['quantity']
     ];
 
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-    }
-
     $_SESSION['cart'][] = $item;
     header("Location: cart.php");
     exit;
 }
 
-$menu = [
-  "Party Food" => [
-    ["name" => "Party Sausage Roll", "each" => 3.60, "dozen" => 30.00, "img" => "Brownie.jpg"],
-    ["name" => "Party Pies", "each" => 3.60, "dozen" => 32.00, "img" => "Muffin.jpg"],
-    ["name" => "Party Quiche Lorraine", "each" => 3.60, "dozen" => 32.00, "img" => "Brownie.jpg"],
-    ["name" => "Vegan Party Pastie (vg)", "each" => 4.00, "dozen" => 40.00, "img" => "Muffin.jpg"],
-    ["name" => "Party Quiche Vegetable", "each" => 3.60, "dozen" => 32.00, "img" => "Brownie.jpg"],
-    ["name" => "Gluten Free Party Pie (gf)", "each" => 4.00, "dozen" => 40.00, "img" => "Muffin.jpg"],
-    ["name" => "Party Spinach & Cheese Filo (v)", "each" => 3.60, "dozen" => 32.00, "img" => "Brownie.jpg"],
-    ["name" => "Gluten Free Vegetable Roll (gf)", "each" => 4.00, "dozen" => 40.00, "img" => "Muffin.jpg"]
-  ],
-  "Pies" => [
-    ["name" => "Plain Pie", "each" => 7.40, "img" => "CheeseBaconPie.jpg"],
-    ["name" => "Mushroom Pie", "each" => 7.70, "img" => "Brownie.jpg"],
-    ["name" => "Steak & Onion Pie", "each" => 7.70, "img" => "Muffin.jpg"],
-    ["name" => "Pepper Steak Pie", "each" => 8.40, "img" => "CheeseBaconPie.jpg"],
-    ["name" => "Chicken & Leek Pie", "each" => 8.40, "img" => "Brownie.jpg"],
-    ["name" => "Cornish Pastie", "each" => 7.70, "img" => "Muffin.jpg"],
-    ["name" => "Quiche Lorraine", "each" => 7.50, "img" => "CheeseBaconPie.jpg"],
-    ["name" => "Sausage Roll", "each" => 6.20, "img" => "Brownie.jpg"],
-    ["name" => "Cheese & Bacon Pie", "each" => 7.70, "img" => "Muffin.jpg"],
-    ["name" => "Curry Pie", "each" => 7.70, "img" => "CheeseBaconPie.jpg"],
-    ["name" => "Cheese & Spinach Filo (v)", "each" => 7.70, "img" => "Brownie.jpg"],
-    ["name" => "Vegetable Pastie (vg)", "each" => 7.50, "img" => "Muffin.jpg"],
-    ["name" => "Vegetable Quiche (v)", "each" => 7.50, "img" => "CheeseBaconPie.jpg"]
-  ],
-  "Hot Breakfast" => [
-    ["name" => "Fruit Toast", "each" => 6.00, "img" => "Brownie.jpg"],
-    ["name" => "Ham & Cheese Croissant", "each" => 8.50, "img" => "Muffin.jpg"],
-    ["name" => "Ham, Cheese, Tomato Toastie", "each" => 8.20, "img" => "CheeseBaconPie.jpg"],
-    ["name" => "Double Egg & Bacon Roll", "each" => 13.50, "img" => "Brownie.jpg"],
-    ["name" => "Banana Bread", "each" => 6.00, "img" => "Muffin.jpg"],
-    ["name" => "Cheese & Tomato Croissant (v)", "each" => 8.50, "img" => "CheeseBaconPie.jpg"],
-    ["name" => "Egg, Bacon & Cheese Muffin", "each" => 6.80, "img" => "Brownie.jpg"],
-    ["name" => "Mini Filled Croissants", "each" => 6.00, "img" => "Muffin.jpg"]
-  ],
-  "Donuts" => [
-    ["name" => "Cinnamon", "each" => 2.40, "img" => "CheeseBaconPie.jpg"],
-    ["name" => "Mini Filled", "each" => 3.80, "img" => "Muffin.jpg"],
-    ["name" => "Iced Jam Ball", "each" => 4.80, "img" => "Brownie.jpg"],
-    ["name" => "Iced", "each" => 2.80, "img" => "CheeseBaconPie.jpg"],
-    ["name" => "Jam Ball", "each" => 4.60, "img" => "Muffin.jpg"],
-    ["name" => "Long John", "each" => 5.00, "img" => "Brownie.jpg"]
-  ],
-  "Cakes and Slices" => [
-    ["name" => "Brownie", "each" => 6.00, "img" => "Brownie.jpg"],
-    ["name" => "Muffin", "each" => 5.60, "img" => "Muffin.jpg"],
-    ["name" => "Cheese & Bacon Pie", "each" => 7.70, "img" => "CheeseBaconPie.jpg"]
-  ]
-];
+// Fetch products grouped by category
+$productsByCategory = [];
+$result = $conn->query("SELECT * FROM products ORDER BY category, name");
+
+while ($row = $result->fetch_assoc()) {
+    $category = $row['category'];
+    $productsByCategory[$category][] = $row;
+}
 ?>
 
 <link rel="stylesheet" href="../css/style.css">
 
-<div class="menu-page">
+<div class="menu-page" style="text-align: center; font-family: 'Georgia', serif;">
   <h1>Our Menu</h1>
+  <br><br>
 
-  <?php foreach ($menu as $category => $items): ?>
-    <h2 class="menu-category"><?= $category ?></h2>
-    <div class="menu-grid">
+  <?php foreach ($productsByCategory as $category => $items): ?> <br>
+    <h2 class="menu-category"><?= htmlspecialchars($category) ?></h2> <br>
+    <div class="menu-grid"><br>
       <?php foreach ($items as $item): ?>
         <div class="menu-item">
-          <img src="../images/<?= $item['img'] ?>" alt="<?= $item['name'] ?>">
-          <h3><?= $item['name'] ?></h3>
+          <a href="product_detail.php?id=<?= $item['id'] ?>">
+            <img src="../images/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+          </a>
 
-          <p><strong>Each: $<?= number_format($item['each'], 2) ?></strong></p>
+          <h3>
+            <a href="product_detail.php?id=<?= $item['id'] ?>">
+              <?= htmlspecialchars($item['name']) ?>
+            </a>
+          </h3>
+
+          <?php if (!empty($item['description'])): ?>
+           
+          <?php endif; ?>
+          
+
           <form method="post">
             <input type="hidden" name="product" value="<?= htmlspecialchars($item['name']) ?>">
-            <input type="hidden" name="price" value="<?= $item['each'] ?>">
-            <input type="hidden" name="type" value="Each">
-            <input type="number" name="quantity" value="1" min="1" class="qty-box">
-            <button type="submit" class="add-btn">Add Each</button>
           </form>
+          <br>
 
-          <?php if (!empty($item['dozen'])): ?>
-            <p><strong>Dozen: $<?= number_format($item['dozen'], 2) ?></strong></p>
+          <?php if (!empty($item['dozen_price'])): ?>
+            <p><strong>Dozen: $<?= number_format($item['dozen_price'], 2) ?></strong></p>
             <form method="post">
               <input type="hidden" name="product" value="<?= htmlspecialchars($item['name']) ?>">
-              <input type="hidden" name="price" value="<?= $item['dozen'] ?>">
+              <input type="hidden" name="price" value="<?= $item['dozen_price'] ?>">
               <input type="hidden" name="type" value="Dozen">
               <input type="number" name="quantity" value="1" min="1" class="qty-box">
               <button type="submit" class="add-btn">Add Dozen</button>
@@ -112,5 +78,6 @@ $menu = [
     </div>
   <?php endforeach; ?>
 </div>
+<br><br>
 
 <?php include('../partials/footer.php'); ?>
